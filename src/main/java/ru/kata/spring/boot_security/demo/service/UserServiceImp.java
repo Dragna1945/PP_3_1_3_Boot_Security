@@ -6,10 +6,11 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import ru.kata.spring.boot_security.demo.models.User;
 import ru.kata.spring.boot_security.demo.repository.UserRepository;
 
-import javax.transaction.Transactional;
+
 import java.util.List;
 
 @Service
@@ -36,7 +37,6 @@ public class UserServiceImp implements UserService {
     }
 
     @Override
-    @Transactional
     public User showUser(Long id) {
         User user = userRepository.findById(id).get();
         return user;
@@ -51,7 +51,6 @@ public class UserServiceImp implements UserService {
     }
 
     @Override
-    @Transactional
     public List<User> getAllUsers() {
         return userRepository.findAll();
     }
@@ -66,7 +65,6 @@ public class UserServiceImp implements UserService {
     }
 
     @Override
-    @Transactional
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         User user = findByUsername(username);
 
