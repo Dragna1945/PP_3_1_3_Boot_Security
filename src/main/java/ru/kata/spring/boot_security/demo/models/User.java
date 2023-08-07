@@ -9,6 +9,7 @@ import javax.validation.constraints.Size;
 import java.util.Collection;
 import java.util.List;
 
+
 @Entity
 @Table(name = "users")
 public class User implements UserDetails {
@@ -31,28 +32,21 @@ public class User implements UserDetails {
     @Column(name = "password")
     private String password;
 
-    @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(name = "users_roles",
-            joinColumns = @JoinColumn(name = "user_id"),
-            inverseJoinColumns = @JoinColumn(name = "role_id"))
+    @OneToMany (fetch = FetchType.LAZY, mappedBy = "users")
+
     private List<Role> roles;
 
     public User() {
     }
 
-    public User(String username, String email, String password) {
+    public User(String username,  String email, String password) {
         this.username = username;
         this.email = email;
         this.password = password;
+
     }
 
-    public List<Role> getRoles() {
-        return roles;
-    }
 
-    public void setRoles(List<Role> roles) {
-        this.roles = roles;
-    }
 
     public Long getId() {
         return id;
