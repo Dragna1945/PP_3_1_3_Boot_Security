@@ -17,9 +17,8 @@ public class Role implements GrantedAuthority {
     @Column(name = "name" , unique = true)
     private String name;
 
-    @ManyToOne
-    @JoinColumn(name = "users_id")
-    private User users;
+    @ManyToMany(mappedBy = "roles")
+    private List<User> users;
 
     public Role() {
     }
@@ -44,11 +43,11 @@ public class Role implements GrantedAuthority {
         this.name = name;
     }
 
-    public User getUsers() {
+    public List<User> getUsers() {
         return users;
     }
 
-    public void setUsers(User users) {
+    public void setUsers(List<User> users) {
         this.users = users;
     }
 
