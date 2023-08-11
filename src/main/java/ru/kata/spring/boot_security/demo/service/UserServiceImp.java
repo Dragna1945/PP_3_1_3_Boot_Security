@@ -36,7 +36,6 @@ public class UserServiceImp implements UserService {
     }
 
     @Override
-    @Transactional
     public User showUser(Long id) {
         User user = userRepository.findById(id).get();
         return user;
@@ -51,7 +50,6 @@ public class UserServiceImp implements UserService {
     }
 
     @Override
-    @Transactional
     public List<User> getAllUsers() {
         return userRepository.findAll();
     }
@@ -66,7 +64,6 @@ public class UserServiceImp implements UserService {
     }
 
     @Override
-    @Transactional
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         User user = findByUsername(username);
 
