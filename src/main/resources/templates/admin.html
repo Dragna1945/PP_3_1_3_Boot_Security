@@ -87,7 +87,7 @@
                                         <td th:text="${user.id}">ID</td>
                                         <td th:text="${user.getUsername()}"></td>
                                         <td th:text="${user.getEmail()}"></td>
-                                        <td th:text="${user.getRoles()}"></td>
+                                        <td th:text="${user.getAuthorities()}"></td>
 
                                         <td>
 
@@ -137,7 +137,7 @@
                                                                 <div class="form-group">
                                                                     <label for="rolesEdit">Roles</label>
                                                                     <select multiple class="form-control" name="roles"
-                                                                            id="rolesEdit" th:value="${user.roles}">
+                                                                            id="rolesEdit" th:value="${user.getAuthorities()}">
                                                                         <option selected="selected" value="1">USER
                                                                         </option>
                                                                         <option value="2">ADMIN</option>
